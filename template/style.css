@@ -6,6 +6,7 @@ div {
 code {
 	white-space: pre-wrap;
 	font-size: 1.2em;
+	font-family: monospace;
 }
 #document {
 	display: block;
@@ -16,7 +17,7 @@ code {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	width: 15em;
+	width: 16em;
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-top: 1em;
@@ -28,7 +29,7 @@ code {
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	padding-left: 15em;
+	padding-left: 16em;
 }
 #top-bar {
 	width: 100%;
@@ -38,7 +39,6 @@ code {
 	border-bottom: solid #e0e0e0 1px;
 }
 #gen-content {
-	padding-top: 1em;
 	padding-left: 1em;
 	width: 75%;
 }
@@ -58,11 +58,12 @@ h1 {
 }
 h2 {
 	margin-top: 0.2em;
-	margin-top: 0.2em;
+	margin-bottom: 0.2em;
 }
 h3 {
 	margin-top: 1em;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.5em;
+	text-decoration: underline;
 }
 ul {
 	margin: 0px;
@@ -76,4 +77,22 @@ hr {
 	margin-right: 1em;
 	border: none;
 	border-bottom: solid #e0e0e0 1px;
+}
+#logo {
+	width: 12em;
+}
+.code-box {
+	padding: 1em;
+	background-color: white;
+	/*max-width: 50em;*/
+	display: inline-block;
+	padding-right: 5em;
+}
+.code-keyword {
+	color: blue;
+}
+
+a {
+	text-decoration: none;
+	color: purple;
 }

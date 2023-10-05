@@ -1,10 +1,10 @@
 ## builder::builder\_context Class Reference
 <hr>
 	
-	#include "builder/builder_context.h"
+	\k{#include} "builder/builder_context.h"
 
-	namespace builder {
-	  class builder_context;
+	\k{namespace} builder {
+	  \k{class} builder_context;
 	}
 
 <hr>
@@ -19,13 +19,6 @@ The builder\_context class is the main context object type for configuring and e
 ### Public Member Functions
 - [`extract_function_ast`](builder_context_extract_function_ast.html)
 
-
-### Example
-
-
-
-
-<hr>
 
 ### Member Descriptions
 
@@ -56,3 +49,34 @@ This flag is only used when the `compile_function_with_context` function is used
 	std::string dynamic_header_includes = "";
 
 This member is only used when the `compile_function_with_context` function is used. The contents of this string are pasted at the top of the generated code before compilation and is typically used for inserting required headers and types. 
+
+### Example - [Try It!](https://buildit.so/tryit/?sample=shared&pid=feaab8cb3987137b5f9f0c54b9a8510c) 
+
+<pre class="code-box">
+\k{#include} "builder/builder_context.h"
+\k{#include} "blocks/c_code_generator.h"
+\k{#include} &lt;iostream&gt;
+
+\k{static} \k{void} foo (\k{void}) {
+    builder::dyn_var&lt;\k{int}&gt; x = 0;
+    x = x + 1;
+    builder::dyn_var&lt;\k{int}&gt; y = x;
+    builder::dyn_var&lt;\k{int}&gt; z = y + 1;
+    z = z + 1;
+}
+
+\k{int} main(\k{int} argc, \k{char}* argv[]) {
+
+    // Create and configure a new builder_context object
+    builder::builder_context context;
+    context.run_rce = \k{true};         
+    // Extract code from the function foo
+    \k{auto} ast = context.extract_function_ast(foo, "foo");
+
+    // Generate code for the extracted AST
+    block::c_code_generator::generate_code(ast, std::cout, 0);
+
+    \k{return} 0;
+}
+</pre>
+
