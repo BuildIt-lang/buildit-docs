@@ -14,7 +14,9 @@ The dyn\_var&lt;T&gt; type is used to declare variables and expressions that sho
 <br><br>
 Currently supported types that can be used with dyn\_var - `int, long, short, long long, char, void, float, double` along with their unsigned versions. Arrays, pointers and references of these types are also supported. For all other types `builder::name` should be used. Custom types with custom members can be created by inheriting from [`builder::custom_type<>`](custom_type.html) or by [specializing `dyn_var<T>`](specialize_dyn_var.h).
 <br><br>
-Array types can be created in two ways - `dyn_var<T[]>` or `dyn_var<T[N]>` where `N` is a compile time constant. If the size of the array is a first stage runtime value, the first version should be used and the array should be resize later by calling [`builder::resize_arr()`](dyn_var.html#t-resize_arr).
+dyn\_var of array types can be created in two ways - `dyn_var<T[]>` or `dyn_var<T[N]>` where `N` is a compile time constant. If the size of the array is a first stage runtime value, the first version should be used and the array should be resize later by calling [`builder::resize_arr()`](dyn_var.html#t-resize_arr).
+<br><br>
+Arrays, std::vector, std::array or similar containers for dyn\_var should never be created, use [`dyn_arr<T>`](dyn_arr.html) instead. Notice that while `dyn_var<T[]>` produces an array in the generated codewhich can be indexed by dyn\_var values in the second stage, `dyn_arr<T, N>` produces a set of `dyn_var` values. The array can only be indexed with first stage values and produces access to the appropriate dyn\_var from the set.
 
 ### Public Member Functions
 This type has several special constructor overloads for specific scenarios. 

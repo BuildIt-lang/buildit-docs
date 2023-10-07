@@ -21,7 +21,7 @@ all: $(OBJS) $(ASSETS)
 $(BUILD_DIR)/%.html: $(SRC_DIR)/%.md $(TEMPLATES) $(ASSETS)
 	bash -c 'cat $(TEMPLATE_DIR)/top.html <(markdown $<) $(TEMPLATE_DIR)/bottom.html > $@'	
 	sed 's/STYLE_HASH/$(STYLE_HASH)/g' -i $@
-	sed 's/\\k{\([a-z#]*\)}/<span class="code-keyword">\1<\/span>/g' -i $@
+	sed 's/\\k{\([a-z#_]*\)}/<span class="code-keyword">\1<\/span>/g' -i $@
 
 $(BUILD_DIR)/%: $(TEMPLATE_DIR)/%
 	cp $< $@
