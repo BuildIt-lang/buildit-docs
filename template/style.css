@@ -45,9 +45,9 @@ code {
 
 body {
 	margin: 0px;
-	font-family: 'Inria Sans', sans-serif;
-	font-weight: 300;
-	font-size: 1.2em;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
 	background-color: #FBF8F3;
 	color: #333;
 }
@@ -91,7 +91,9 @@ hr {
 .code-keyword {
 	color: blue;
 }
-
+.code-comment {
+	color: grey;
+}
 a {
 	text-decoration: none;
 	color: purple;

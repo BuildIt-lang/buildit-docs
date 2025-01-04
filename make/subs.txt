@@ -1,0 +1,2 @@
+s/\\k{\([a-z#_]*\)}/<span class="code-keyword">\1<\/span>/g
+s/\\c{\([^}]*\)}/<span class="code-comment">\1<\/span>/g
