@@ -1,10 +1,12 @@
 ## builder::builder\_context::extract\_function\_ast Function Reference
 <hr>
 	
-	#include "builder/builder_context.h"
+	\k{#include} "builder/builder_context.h"
+	\k{namespace} builder {
+	  \k{template} <\k{typename} F, \k{typename}...OtherArgs>
+	  block::stmt::Ptr extract_function_ast(F func_input, std::string func_name, OtherArgs&&...args);
+	}
 
-	template <typename F, typename...OtherArgs>
-	block::stmt::Ptr extract_function_ast(F func_input, std::string func_name, OtherArgs&&...args);
 <hr>
 The extract\_function\_ast function accepts a callable object for staging. The `func_input` argument can be a function pointer, lambda or an `std::function` object to be staged. `func_input` can have a mix of `dyn_var<T>`, `static_var<T>` or regular C++ type parameters. The `dyn_var<T>` arguments become arguments to the generated function, while the rest of the arguments should be provided in order after the `func_name` argument. 
 

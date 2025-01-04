@@ -22,29 +22,28 @@ The builder\_context class is the main context object type for configuring and e
 
 ### Member Descriptions
 
-<p id="t-run_rce"></p>
+\tag{run_rce}
 
-	bool run_rce = false;
+	\k{bool} run_rce = \k{false};
 
 Enable running the Redundant Copy Elimination pass after extraction. This pass tries to simplify the generated code by removing redundant copies of variables that arise from passing `dyn_var<T>` around as function arguments. 
 
 
-<p id="t-feature_unstructured"></p>
+\tag{feature_unstructured}
 
-	bool feature_unstructured = false;
+	\k{bool} feature_unstructured = \k{false};
 
 Forces BuildIt to extract unstructured code. This code does not have any while loops or for loops but only branches and gotos. The jumps from the gotos are also not necessarily structured meaning they can jump across branches. This also enables aggressive memoization inserting jumps instead of copying code. 
 
 
-<p id="t-dynamic_use_cxx"></p>
+\tag{dynamic_use_cxx}
 
-	bool dynamic_use_cxx = false;
+	\k{bool} dynamic_use_cxx = \k{false};
 
 This flag is only used when the `compile_function_with_context` function is used. Setting this flag instructs BuildIt to compile the generated code as C++ instead of C. 
 
 
-<p id="t-dynamic_header_includes"></p>
-
+\tag{dynamic_header_includes}
 
 	std::string dynamic_header_includes = "";
 
@@ -55,25 +54,25 @@ This member is only used when the `compile_function_with_context` function is us
 <pre class="code-box">
 \k{#include} "builder/builder_context.h"
 \k{#include} "blocks/c_code_generator.h"
-\k{#include} &lt;iostream&gt;
+\k{#include} \<iostream\>
 
 \k{static} \k{void} foo (\k{void}) {
-    builder::dyn_var&lt;\k{int}&gt; x = 0;
+    builder::dyn_var\<\k{int}\>; x = 0;
     x = x + 1;
-    builder::dyn_var&lt;\k{int}&gt; y = x;
-    builder::dyn_var&lt;\k{int}&gt; z = y + 1;
+    builder::dyn_var\<\k{int}\>; y = x;
+    builder::dyn_var\<\k{int}\>; z = y + 1;
     z = z + 1;
 }
 
 \k{int} main(\k{int} argc, \k{char}* argv[]) {
 
-    // Create and configure a new builder_context object
+    \c{// Create and configure a new builder_context object}
     builder::builder_context context;
     context.run_rce = \k{true};         
-    // Extract code from the function foo
+    \c{// Extract code from the function foo}
     \k{auto} ast = context.extract_function_ast(foo, "foo");
 
-    // Generate code for the extracted AST
+    \c{// Generate code for the extracted AST}
     block::c_code_generator::generate_code(ast, std::cout, 0);
 
     \k{return} 0;
