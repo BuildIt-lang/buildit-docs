@@ -14,7 +14,11 @@ The builder\_context class is the main context object type for configuring and e
 - [`bool run_rce = false`](builder_context.html#t-run_rce)
 - [`bool feature_unstructured = false`](builder_context.html#t-feature_unstructured)
 - [`bool dynamic_use_cxx = false`](builder_context.html#t-dynamic_use_cxx)
-- [`bool std::string dynamic_header_includes`](builder_context.html#t-dynamic_header_includes)
+- [`std::string dynamic_header_includes = ""`](builder_context.html#t-dynamic_header_includes)
+- [`std::string dynamic_compiler_flags = ""`](builder_context.html#t-dynamic_compiler_flags)
+- [`bool use_memoization = true`](builder_context.html#t-use_memoization)
+- [`bool enable_d2x = false`](builder_context.html#t-enable_d2x)
+
 
 ### Public Member Functions
 - [`extract_function_ast`](builder_context_extract_function_ast.html)
@@ -48,6 +52,25 @@ This flag is only used when the `compile_function_with_context` function is used
 	std::string dynamic_header_includes = "";
 
 This member is only used when the `compile_function_with_context` function is used. The contents of this string are pasted at the top of the generated code before compilation and is typically used for inserting required headers and types. 
+
+\tag{dynamic_compiler_flags}
+
+	std::string dynamic_compiler_flags = "";
+
+This member is only used when the `compile_function_with_context` function is used. The contents of this string are passed as compiler arguments while compiling the generated code and is typically used to include and link against external dependencies. 
+
+
+\tag{use_memoization}
+
+	\k{bool} use_memoization = true;
+
+This option is used to control if BuildIt would use memoization while extraction. Generally this option should be set to true since disabling memoization will lead to algorithmic slow down, but can be enabled for debugging typically to find improper uses of static\_var. 
+
+\tag{enable_d2x}
+
+	\k{bool} enable_d2x = false;
+
+Enabling this option instructs BuildIt to gather extra information about the first stage code including source information and values of static\_vars during extraction. This extracted information can be generted as [D2X](https://buildit.so/d2x) debugging metadata by calling [`block::c_code_generator::generate_code_d2x`](c_code_generator_generate_code.html). This option can only be turned on when `ENABLE_D2X` [configuration option](configuration_options.html) is used. 
 
 ### Example - [Try It!](https://buildit.so/tryit/?sample=shared&pid=feaab8cb3987137b5f9f0c54b9a8510c) 
 

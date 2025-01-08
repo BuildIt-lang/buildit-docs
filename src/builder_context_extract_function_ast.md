@@ -4,7 +4,7 @@
 	\k{#include} "builder/builder_context.h"
 	\k{namespace} builder {
 	  \k{template} <\k{typename} F, \k{typename}...OtherArgs>
-	  block::stmt::Ptr extract_function_ast(F func_input, std::string func_name, OtherArgs&&...args);
+	  block::stmt::Ptr builder_context::extract_function_ast(F func_input, std::string func_name, OtherArgs&&...args);
 	}
 
 <hr>

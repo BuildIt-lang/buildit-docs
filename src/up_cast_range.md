@@ -1,4 +1,4 @@
-## builder::up\_cast\_range Class Reference
+## builder::up\_cast\_range Function Reference
 <hr>
 
 	\k{#include} "builder/lib/utils.h"

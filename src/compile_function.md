@@ -1,4 +1,4 @@
-## builder::compile\_function, compile\_function\_with\_context and compile\_asts Class Reference
+## builder::compile\_function, compile\_function\_with\_context and compile\_asts Function Reference
 <hr>
 
 	\k{#include} "builder/builder_dynamic.h"
