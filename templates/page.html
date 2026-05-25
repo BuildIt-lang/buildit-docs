@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{ include "head.html.inc" }}
+</head>
+<body>
+{{ include "header.html.inc" }}
+<div class="layout">
+  <aside class="sidebar">
+    {{ nav }}
+  </aside>
+  <main class="content">
+    {{ breadcrumbs }}
+    <article class="doc-page">
+      <header class="doc-header">
+        <p class="doc-kind">{{ kind }}</p>
+        <h1>{{ title }}</h1>
+        {{ metadata }}
+      </header>
+      {{ content }}
+    </article>
+  </main>
+</div>
+{{ include "footer.html.inc" }}
+<script src="{{ asset "site.js" }}"></script>
+</body>
+</html>
