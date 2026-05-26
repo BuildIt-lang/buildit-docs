@@ -465,6 +465,7 @@ pre code {
 }
 
 .doc-table {
+  max-width: 100%;
   width: 100%;
   margin: 18px 0 28px;
   border-collapse: separate;
@@ -480,6 +481,7 @@ pre code {
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .doc-table th:last-child,
@@ -497,6 +499,27 @@ pre code {
   text-align: left;
   font-size: 13px;
   font-weight: 800;
+}
+
+.doc-table code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.index-table {
+  table-layout: fixed;
+}
+
+.index-table th:nth-child(1) {
+  width: 44%;
+}
+
+.index-table th:nth-child(2) {
+  width: 22%;
+}
+
+.index-table th:nth-child(3) {
+  width: 34%;
 }
 
 .doc-table tr {
@@ -563,6 +586,63 @@ blockquote {
 
   .content {
     padding: 24px 18px 36px;
+  }
+
+  .reference-index .index-table,
+  .reference-index .index-table thead,
+  .reference-index .index-table tbody,
+  .reference-index .index-table tr,
+  .reference-index .index-table th,
+  .reference-index .index-table td {
+    display: block;
+  }
+
+  .reference-index .index-table {
+    border: 0;
+    background: transparent;
+  }
+
+  .reference-index .index-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .reference-index .index-table tr {
+    margin: 12px 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .reference-index .index-table td {
+    border-right: 0;
+  }
+
+  .reference-index .index-table td::before {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .reference-index .index-table td:nth-child(1)::before {
+    content: "Page";
+  }
+
+  .reference-index .index-table td:nth-child(2)::before {
+    content: "Kind";
+  }
+
+  .reference-index .index-table td:nth-child(3)::before {
+    content: "Header";
   }
 
   h1 {
